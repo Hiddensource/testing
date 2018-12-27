@@ -13,8 +13,11 @@ router.get('/', function (req, res, next) {
 
 router.get('/ip' , function(req,res){
    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+   reqIp = (req.ip).split(':');
+   reqIp = reqIp[reqIp.length-1];
    res.send({
-     "a": `RESTful API ${req.ip},  ${ip} , ${requestIp.getClientIp(req)}`
+    //  "ip": `RESTful API ${req.ip},  ${ip} , ${requestIp.getClientIp(req)}`
+    "ip": reqIp
    });
 });
 
