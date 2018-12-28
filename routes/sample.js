@@ -21,7 +21,7 @@ router.get('/ip', function (req, res) {
     result = false;
   }
    res.send({
-     "ip": result
+     "isExist": result
    });
 });
 
