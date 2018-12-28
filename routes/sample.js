@@ -11,15 +11,18 @@ router.get('/', function (req, res, next) {
 
 });
 
-router.get('/ip' , function(req,res){
-   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-   reqIp = (req.ip).split(':');
-   reqIp = reqIp[reqIp.length-1];
+router.get('/ip', function (req, res) {
+  reqIp = (req.ip).split(':');
+  reqIp = reqIp[reqIp.length - 1];
+  if(reqIp === '172.16.17.179'){
+    result = true;
+  }
+  else{
+    result = false;
+  }
    res.send({
-    //  "ip": `RESTful API ${req.ip},  ${ip} , ${requestIp.getClientIp(req)}`
-    "ip": reqIp
+     "ip": result
    });
 });
-
 
 module.exports = router;
